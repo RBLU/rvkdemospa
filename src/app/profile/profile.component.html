@@ -1,0 +1,18 @@
+<h1>Information, welcher die Angular APP vom MS Graph API geholt hat:</h1>
+<div>
+    <p><strong>First Name: </strong> {{profile?.givenName}}</p>
+    <p><strong>Last Name: </strong> {{profile?.surname}}</p>
+    <p><strong>Email: </strong> {{profile?.userPrincipalName}}</p>
+    <p><strong>Id: </strong> {{profile?.id}}</p>
+</div>
+
+<h1>Information, welcher die Angular APP vom Spring Backend API auf http://localhost:8080/Admin geholt hat:</h1>
+<div>Nur zugänglich für User die die Rolle F_Admin haben </div>
+<h3>Ein Leistungserbringer:</h3>
+
+<div>
+    <p><strong>First Name: </strong> {{lerb?.givenName}}</p>
+    <p><strong>Last Name: </strong> {{lerb?.surname}}</p>
+    <p><strong>Email: </strong> {{lerb?.userPrincipalName}}</p>
+    <p><strong>Id: </strong> {{lerb?.id}}</p>
+</div>

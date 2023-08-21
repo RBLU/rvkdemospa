@@ -32,7 +32,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http"; // I
     MsalModule.forRoot(
       new PublicClientApplication({
         auth: {
-          clientId: "797e5439-4301-48a6-8cbb-b9b9204cdd5e", // Application (client) ID from the app registration
+          clientId: "10fef432-a87c-4a1c-b0c8-fee50fe63ab2", // Application (client) ID from the app registration
           authority:
             "https://login.microsoftonline.com/f5a1ae0d-25b0-4844-b8a5-be3d96efbd37", // The Azure cloud instance and the app's sign-in audience (tenant ID, common, organizations, or consumers)
           redirectUri: "http://localhost:4200", // This is your redirect URI
@@ -51,7 +51,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http"; // I
         interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
         protectedResourceMap: new Map([
           ["https://graph.microsoft.com/v1.0/me", ["user.read"]],
-          ["http://localhost:8080", ["api://797e5439-4301-48a6-8cbb-b9b9204cdd5e/rat.readwrite"]],
+          ["http://localhost:8080", ["api://10fef432-a87c-4a1c-b0c8-fee50fe63ab2/rvkrat.readwrite"]],
         ]),
       }
     ),

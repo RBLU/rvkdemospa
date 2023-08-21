@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me';
+const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me?$select=givenName,surname,companyName,mail,id';
 const RVK_RAT_ENDPOINT = 'http://localhost:8080/Admin';
 
 type ProfileType = {
   givenName?: string,
   surname?: string,
-  userPrincipalName?: string,
-  id?: string
+  mail?: string,
+  id?: string,
+  companyName?:string
 };
 
 type LerbType = {

@@ -36,6 +36,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http"; // I
           authority:
             "https://login.microsoftonline.com/f5a1ae0d-25b0-4844-b8a5-be3d96efbd37", // The Azure cloud instance and the app's sign-in audience (tenant ID, common, organizations, or consumers)
           redirectUri: "http://localhost:4200", // This is your redirect URI
+          postLogoutRedirectUri: "http://localhost:4200"
         },
         cache: {
           cacheLocation: "localStorage"

@@ -46,4 +46,8 @@ export class AppComponent implements OnInit {
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
   }
+
+  logout() {
+    this.authService.logoutRedirect();
+  }
 }

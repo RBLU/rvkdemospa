@@ -12,12 +12,5 @@ export class HomeComponent implements OnInit {
   constructor(private authService: MsalService, private msalBroadcastService: MsalBroadcastService) { }
 
   ngOnInit(): void {
-    this.msalBroadcastService.msalSubject$
-      .pipe(
-        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
-      )
-      .subscribe((result: EventMessage) => {
-        console.log(result);
-      });
   }
 }

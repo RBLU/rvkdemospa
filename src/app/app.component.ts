@@ -1,8 +1,9 @@
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
-import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
+import { InteractionStatus, RedirectRequest, EventMessage, EventType } from '@azure/msal-browser';
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,15 @@ export class AppComponent implements OnInit {
     )
     .subscribe(() => {
       this.setLoginDisplay();
-    })
+    });
+
+    this.broadcastService.msalSubject$
+      .pipe(
+        filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
+      )
+      .subscribe((result: EventMessage) => {
+        console.log(result);
+      });
   }
 
   ngOnDestroy(): void {

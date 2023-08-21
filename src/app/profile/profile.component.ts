@@ -48,13 +48,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.msalBroadcastService.msalSubject$
-    .pipe(
-      filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
-    )
-    .subscribe((result: EventMessage) => {
-      console.log(result);
-    });
+   
     this.getProfile();
     this.getLerb();
     this.getGraphBe();

@@ -13,9 +13,13 @@ export class RoleGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        const userRoles = this._msalService.instance.getAllAccounts()[0].idTokenClaims.roles;
-        const allowedRoles = next.data["roles"];
-        const matchingRoles = userRoles.filter(x => allowedRoles.includes(x));
-        return matchingRoles.length > 0;
+        if (this._msalService.instance.getAllAccounts().length == 0) {
+            return false;
+        } else {
+            const userRoles = this._msalService.instance.getAllAccounts()[0].idTokenClaims.roles;
+            const allowedRoles = next.data["roles"];
+            const matchingRoles = userRoles.filter(x => allowedRoles.includes(x));
+            return matchingRoles.length > 0;
+        }
     }
 }

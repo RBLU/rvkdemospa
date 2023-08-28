@@ -18,10 +18,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http"; // I
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    ProfileComponent
-  ],
+    AppComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

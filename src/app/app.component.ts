@@ -3,6 +3,8 @@ import { InteractionStatus, RedirectRequest, EventMessage, EventType } from '@az
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
+import { Router, UrlSegment} from '@angular/router';
+import { LoginService } from './login.service';
 
 
 @Component({
@@ -16,7 +18,8 @@ export class AppComponent implements OnInit {
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
 
-  constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration, private broadcastService: MsalBroadcastService, private authService: MsalService) { }
+  constructor(@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration, 
+          private broadcastService: MsalBroadcastService, private authService: MsalService, private router:Router, private loginService:LoginService) { }
 
   ngOnInit() {
     this.isIframe = window !== window.parent && !window.opener;
@@ -36,6 +39,11 @@ export class AppComponent implements OnInit {
       )
       .subscribe((result: EventMessage) => {
         console.log(result);
+        let postLoginUrl = this.loginService.getPostLoginUrl();
+        if (postLoginUrl != null) {
+          this.loginService.setPostLoginUrl(null);
+          this.router.navigate([postLoginUrl[0].path]);  
+        }
       });
   }
 
